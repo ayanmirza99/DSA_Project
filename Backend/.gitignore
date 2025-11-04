@@ -1,0 +1,48 @@
+# Dependencies
+/src/node_modules
+/jspm_packages
+/pnpm-lock.yaml
+
+# Runtime data
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/pnpm-debug.log*
+
+# Production/Build artifacts
+/dist
+/build
+/out
+/coverage
+
+# Environment Variables and Sensitive Files
+# Always keep your environment variables file secure and out of version control.
+.env
+.env.*
+!.env.example # Keep an example file for structure, but no secrets!
+/secrets.json
+
+# Logs
+/log
+/logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Testing/Coverage
+/coverage
+/.nyc_output
+
+# IDE and OS Specific Files
+.DS_Store
+Thumbs.db
+/.*.swp
+/.idea/
+.vscode/
+
+# TypeScript specific
+*.tsbuildinfo
+
+# Next.js / Nuxt.js / Other Framework Specific (if applicable, but generally for the backend, you might not need these)
+/.next
+/.nuxt
