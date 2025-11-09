@@ -7,7 +7,7 @@ export default function runCpp(programName, students) {
     const cpp = spawn(exePath);
 
     students.forEach((s) => {
-      cpp.stdin.write(`${s.name} ${s.grade}\n`);
+      cpp.stdin.write(`${s.name} ${s.grade} ${s.roll}\n`);
     });
     cpp.stdin.end();
 

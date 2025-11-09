@@ -6,45 +6,59 @@
 
 using namespace std;
 
-struct Student {
+struct Student
+{
     string name;
     int grade;
+    int roll;
 };
 
-string toJSON(const vector<Student>& students) {
+string toJSON(const vector<Student> &students)
+{
     string json = "[";
-    for (size_t i = 0; i < students.size(); ++i) {
-        json += "{\"name\":\"" + students[i].name + "\",\"grade\":" + to_string(students[i].grade) + "}";
-        if (i != students.size() - 1) json += ",";
+    for (size_t i = 0; i < students.size(); ++i)
+    {
+        json += "{\"name\":\"" + students[i].name + "\","
+                                                    "\"grade\":" +
+                to_string(students[i].grade) + ","
+                                               "\"roll\":" +
+                to_string(students[i].roll) + "}";
+        if (i != students.size() - 1)
+            json += ",";
     }
     json += "]";
     return json;
 }
 
-int main() {
+int main()
+{
     cerr << "Program started..." << endl;
     vector<Student> students;
     string line;
 
     // Read all lines until EOF
-    while (getline(cin, line)) {
-        if (line.empty()) continue; // skip blanks instead of breaking
+    while (getline(cin, line))
+    {
+        if (line.empty())
+            continue; // skip blanks instead of breaking
         istringstream iss(line);
         string name;
         int grade;
-        if (!(iss >> name >> grade)) continue; // skip malformed lines
-        students.push_back({name, grade});
+        int roll;
+        if (!(iss >> name >> grade >> roll))
+            continue; // skip malformed lines
+        students.push_back({name, grade, roll});
     }
 
-    if (students.empty()) {
+    if (students.empty())
+    {
         cerr << "No student data received.\n";
         cout << "[]"; // return empty array safely
         return 0;
     }
 
-    sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
-        return a.grade > b.grade;
-    });
+    sort(students.begin(), students.end(), [](const Student &a, const Student &b)
+         { return a.roll < b.roll; });
 
     cout << toJSON(students);
     return 0;
